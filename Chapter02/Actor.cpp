@@ -21,7 +21,7 @@ Actor::Actor(Game* game)
 	mGame->AddActor(this);
 }
 
-Actor::~Actor()
+Actor::~Actor() 
 {
 	mGame->RemoveActor(this);
 	// Need to delete components

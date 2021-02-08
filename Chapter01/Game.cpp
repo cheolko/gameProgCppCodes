@@ -123,6 +123,7 @@ void Game::UpdateGame()
 	// (converted to seconds)
 	float deltaTime = (SDL_GetTicks() - mTicksCount) / 1000.0f;
 	
+
 	// Clamp maximum delta time value
 	if (deltaTime > 0.05f)
 	{
@@ -172,7 +173,7 @@ void Game::UpdateGame()
 		mIsRunning = false;
 	}
 	// Did the ball collide with the right wall?
-	else if (mBallPos.x >= (1024.0f - thickness) && mBallVel.x > 0.0f)
+	else if ((mBallPos.x + thickness/2.0f) >= (1024.0f - thickness) && mBallVel.x > 0.0f)
 	{
 		mBallVel.x *= -1.0f;
 	}
