@@ -14,6 +14,11 @@
 #include "Ship.h"
 #include "BGSpriteComponent.h"
 
+#include <iostream>	 // CHCH
+
+class  AnimSpriteComponent; // CHCH
+extern AnimSpriteComponent* CHCH_asc; // CHCH
+
 Game::Game()
 :mWindow(nullptr)
 ,mRenderer(nullptr)
@@ -62,6 +67,8 @@ void Game::RunLoop()
 {
 	while (mIsRunning)
 	{
+		//std::cout << "asc 林家: " << CHCH_asc << std::endl; // CHCH
+
 		ProcessInput();
 		UpdateGame();
 		GenerateOutput();
@@ -154,13 +161,16 @@ void Game::GenerateOutput()
 void Game::LoadData()
 {
 	// Create player's ship
+	std::cout << "in loaddata, CHCH: asc 林家: " << CHCH_asc << std::endl;
 	mShip = new Ship(this);
+	std::cout << "after new Ship CHCH: asc 林家: " << CHCH_asc << std::endl;
 	mShip->SetPosition(Vector2(100.0f, 384.0f));
 	mShip->SetScale(1.5f);
 
 	// Create actor for the background (this doesn't need a subclass)
 	Actor* temp = new Actor(this);
 	temp->SetPosition(Vector2(512.0f, 384.0f));
+
 	// Create the "far back" background
 	BGSpriteComponent* bg = new BGSpriteComponent(temp);
 	bg->SetScreenSize(Vector2(1024.0f, 768.0f));
@@ -170,6 +180,7 @@ void Game::LoadData()
 	};
 	bg->SetBGTextures(bgtexs);
 	bg->SetScrollSpeed(-100.0f);
+
 	// Create the closer background
 	bg = new BGSpriteComponent(temp, 50);
 	bg->SetScreenSize(Vector2(1024.0f, 768.0f));

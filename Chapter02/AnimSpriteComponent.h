@@ -20,7 +20,8 @@ public:
 	// Set/get the animation FPS
 	float GetAnimFPS() const { return mAnimFPS; }
 	void SetAnimFPS(float fps) { mAnimFPS = fps; }
-private:
+public: //CH
+	//private:
 	// All textures in the animation
 	std::vector<SDL_Texture*> mAnimTextures;
 	// Current frame displayed

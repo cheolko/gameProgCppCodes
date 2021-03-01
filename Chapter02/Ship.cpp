@@ -10,20 +10,32 @@
 #include "AnimSpriteComponent.h"
 #include "Game.h"
 
+#include <iostream>	// CHCH
+
+//class  AnimSpriteComponent; // CHCH
+ //class AnimSpriteComponent* CHCH_asc; // CHCH
+AnimSpriteComponent* CHCH_asc; // CHCH
+
 Ship::Ship(Game* game)
 	:Actor(game)
 	,mRightSpeed(0.0f)
 	,mDownSpeed(0.0f)
 {
 	// Create an animated sprite component
-	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
+	//AnimSpriteComponent* CHCH_asc = new AnimSpriteComponent(this);
+	CHCH_asc = new AnimSpriteComponent(this);
 	std::vector<SDL_Texture*> anims = {
 		game->GetTexture("Assets/Ship01.png"),
 		game->GetTexture("Assets/Ship02.png"),
 		game->GetTexture("Assets/Ship03.png"),
 		game->GetTexture("Assets/Ship04.png"),
 	};
-	asc->SetAnimTextures(anims);
+	CHCH_asc->SetAnimTextures(anims);
+
+	std::cout << " NEW CHCH: asc аж╪р: " << CHCH_asc << std::endl;
+	std::cout << " asc : " << CHCH_asc->GetAnimFPS() << std::endl;
+	std::cout << " asc : " << CHCH_asc->GetTexHeight() << std::endl;
+	std::cout << " mAnimTextures.size(): " << CHCH_asc->mAnimTextures.size() << std::endl;
 }
 
 void Ship::UpdateActor(float deltaTime)
